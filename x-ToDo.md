@@ -8,4 +8,4 @@
 - [ ] contact
 - [ ] footer
 
-- [ ] 
+- [ ] responsive
