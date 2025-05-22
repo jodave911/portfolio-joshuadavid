@@ -5,4 +5,12 @@
 @theme {
     --font-playfair: "Playfair Display", serif; 
     --font-sora: "Sora", sans-serif; 
+
+    --color-liblue: #93c5fd;
+    --color-secon: #60a5fa;
+    --color-github-dark: #0d1117;
+    --color-github-surface: #161b22;
+    --color-github-line: #30363d;
+    --color-github-text: #c9d1d9;
+    --color-github-accent: #2f81f7;
 }
