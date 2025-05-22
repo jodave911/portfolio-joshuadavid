@@ -9,7 +9,7 @@ const Header = () => {
     return (
     
         <header className="w-full px-6 md:px-12 py-4 bg-transparent text-white font-sora">
-        <div className="max-w-7xl mx-10 flex justify-between items-center">
+        <div className="max-w-8xl mx-10 flex justify-between items-center">
             
             {/* Logo / Brand */}
             <div className="flex flex-col items-center justify-between">
@@ -25,10 +25,6 @@ const Header = () => {
             <a href="#about" className="hover:text-secon">About</a>
             <a href="#contact" className="hover:text-secon ">Contact</a>
             </nav>
-
-
-            
-            
 
         </div>
         </header>
