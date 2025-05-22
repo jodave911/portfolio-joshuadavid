@@ -1,78 +1,42 @@
-'use client';
-import React, { useEffect, useRef } from 'react'
-import gsap from 'gsap';
+import React, { useEffect, useRef } from 'react';
 
-const colors = [
-    "#ffffff"
-]
+const CustomCursor = () => {
+  const cursorRef = useRef(null);
 
-export default function GradientCursor({isActive}) {
-    const mouse = useRef({x: 0, y: 0});
-    const delayedMouse = useRef({x: 0, y: 0});
-    const rafId = useRef(null);
-    const circles = useRef([]);
-    const size = isActive ? 400 : 50;
-    const delay = isActive ? 0.015 : 0.005
-
-    const lerp = (x, y, a) => x * (1 - a) + y * a;
-
-    const manageMouseMove = (e) => {
-        const { clientX, clientY } = e;
-    
-        mouse.current = {
-            x: clientX,
-            y: clientY
-        }
-    }
+  useEffect(() => {
+    const cursor = cursorRef.current;
+    let mouseX = 0, mouseY = 0;
+    let currentX = 0, currentY = 0;
 
     const animate = () => {
-        const { x, y } = delayedMouse.current;
+      currentX += (mouseX - currentX) * 0.1;
+      currentY += (mouseY - currentY) * 0.1;
 
-        delayedMouse.current = {
-            x: lerp(x, mouse.current.x, 0.075),
-            y: lerp(y, mouse.current.y, 0.075)
-        }
+      cursor.style.transform = `translate(-50%, -50%) translate3d(${currentX}px, ${currentY}px, 0)`;
+      requestAnimationFrame(animate);
+    };
 
-        moveCircles(delayedMouse.current.x, delayedMouse.current.y);
-        
-        rafId.current = window.requestAnimationFrame(animate);
-    }
+    const mouseMove = (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    };
 
-    const moveCircles = (x, y) => {
-        if(circles.current.length < 1) return;
-        circles.current.forEach((circle, i) => {
-            gsap.set(circle, {x, y, xPercent: -50, yPercent: -50})
-        })
-    }
+    document.addEventListener('mousemove', mouseMove);
+    animate();
 
-    useEffect( () => {
-        animate();
-        window.addEventListener("mousemove", manageMouseMove);
-        return () => {
-            window.removeEventListener("mousemove", manageMouseMove);
-            window.cancelAnimationFrame(rafId.current)
-        }
-    }, [isActive])
+    return () => document.removeEventListener('mousemove', mouseMove);
+  }, []);
 
-    return (
-        <div className='relative h-screen'>
-            {
-                [...Array(4)].map((_, i) => {
-                    return (
-                    <div 
-                        style={{
-                            backgroundColor: colors[i],
-                            width: size,
-                            height: size,
-                            filter: `blur(${isActive ? 20 : 2}px)`,
-                            transition: `transform ${(4 - i) * delay}s linear, height 0.3s ease-out, width 0.3s ease-out, filter 0.3s ease-out`
-                        }}
-                        className='top-0 left-0 fixed rounded-full mix-blend-difference' 
-                        key={i} 
-                        ref={ref => circles.current[i] = ref}
-                    />)
-                })
-            }
-        </div>
-    )
-}
+  return (
+    <div
+      ref={cursorRef}
+      className="fixed top-0 left-0 w-6 h-6 rounded-full border border-white pointer-events-none z-50 mix-blend-difference transition-all duration-150"
+      style={{
+        transform: 'translate(-50%, -50%) translate3d(0, 0, 0)',
+        transitionTimingFunction: 'ease-out',
+      }}
+    />
+  );
+};
+
+export default CustomCursor;

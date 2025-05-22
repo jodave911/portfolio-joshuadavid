@@ -1,12 +1,12 @@
 import BackGround from './Background';
-import './App.css'
 import React from 'react';
-import dp from './your-photo.png';
-
+import dp from './assets/Joshua-Photos-Assests/joshua-cutout-circle.png';
+import Header from './Header';
 
 const Home = () => {
   return (
     <>
+      <Header />
       <BackGround />
 
       {/* Hero Section*/}
@@ -14,6 +14,13 @@ const Home = () => {
 
         <div className="max-w-7xl w-full flex flex-col items-center justify-between gap-12">
           
+          <div className="">
+            <img
+              src={dp}// Replace with your actual file in /public
+              alt="Joshua David"
+              className="h-[20rem] object-cover rounded-xl shadow-lg"
+            />
+          </div>
        
           {/* Text Content */}
           <div className="text-center">
@@ -44,7 +51,11 @@ const Home = () => {
           </div>
         </div>
       </section>
-      
+
+      {/* Hero Section*/}
+      <section className=" flex items-center justify-center px-4 md:px-16"> 
+
+      </section>
     </>
   );
 };
