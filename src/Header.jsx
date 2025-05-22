@@ -7,12 +7,13 @@ const Header = () => {
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         
         {/* Logo / Brand */}
-        <div className="text-xl font-sora text-github-accent">
-          J<span className="text-secon">D</span>
+        <div className="flex flex-col items-center justify-between">
+            <span className="text-l font-sora text-github-dark">JOSHUA</span>
+            <span className="-mt-2.5 text-secon ext-l font-sora">DAVID</span>
         </div>
 
         {/* Nav Links */}
-        <nav className="space-x-6 text-sm md:text-base">
+        <nav className="space-x-6 text-sm  text-github-dark">
           <a href="#home" className="hover:text-secon">Home</a>
           <a href="#projects" className="hover:text-secon ">Projects</a>
           <a href="#about" className="hover:text-secon">About</a>
