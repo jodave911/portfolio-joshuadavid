@@ -10,7 +10,7 @@ const Home = () => {
       
 
       {/* Hero Section*/}
-      <section className=" flex items-center justify-center p-16"> 
+      <section className=" flex items-center justify-center p-28"> 
 
         <div className="max-w-7xl w-full flex flex-col items-center justify-between gap-12">
           
@@ -18,13 +18,13 @@ const Home = () => {
             <img
               src={dp}// Replace with your actual file in /public
               alt="Joshua David"
-              className="h-[20rem] object-cover rounded-xl drop-shadow-2xl"
+              className="h-[15rem] object-cover rounded-xl drop-shadow-2xl"
             />
           </div>
        
           {/* Text Content */}
           <div className="text-center -mt-14 drop-shadow-2xl">
-            <h1 className="text-5xl md:text-8xl text-github-dark italic font-playfair">
+            <h1 className="text-5xl md:text-8xl text-white italic font-playfair">
               Hey, I’m
             </h1>
 
